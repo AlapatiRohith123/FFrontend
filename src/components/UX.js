@@ -1,86 +1,6 @@
 import React, { useEffect } from "react";
 import "./../files/nav.css";
 function UX(){
-    var count=1;
-    useEffect(()=>{
-        var c=document.getElementById("myCanvas");
-        var ctx=c.getContext("2d");
-        ctx.beginPath();
-        ctx.fillStyle="white";
-        ctx.strokeStyle="green";
-        ctx.arc(11,11,10,0,2*Math.PI);
-        ctx.stroke();
-        ctx.fill();
-        ctx.beginPath();
-        ctx.moveTo(11,3);
-        ctx.lineTo(11,19);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(3,11);
-        ctx.lineTo(19,11);
-        ctx.stroke();
-        var ca=document.getElementById("myCanvas2");
-        var ctxa=ca.getContext("2d");
-        ctxa.beginPath();
-        ctxa.fillStyle="white";
-        ctxa.strokeStyle="red";
-        ctxa.arc(11,11,10,0,2*Math.PI);
-        ctxa.stroke();
-        ctxa.fill();
-        ctxa.beginPath();
-        ctxa.moveTo(3,11);
-        ctxa.lineTo(19,11);
-        ctxa.stroke();
-    },[]);
-
-    const fun2=(id)=>
-    {
-        var index=id.slice(6);
-        document.getElementById("dup"+index).remove();
-    }
-
-    const Fun=(id)=>
-    {
-        useEffect(()=>{
-            var c=document.getElementById("myCanvas");
-            var ca=document.getElementById("myCanvas2");
-        
-            var file=document.getElementById("myfile");
-            var fclone=document.createElement("input");
-            fclone.type="file";
-            fclone.id="file"+count;
-            var div=document.createElement("div");
-            div.id="dup"+count;
-            var br=document.createElement("br")
-            br.id="break"+count;
-            div.appendChild(fclone);
-            var canvas1=document.createElement("canvas");
-            var ctx1=canvas1.getContext("2d");
-            canvas1.width=c.width;
-            canvas1.height=c.height;
-            canvas1.id="add"+count;
-            canvas1.style.marginRight="4px";
-            canvas1.style.marginLeft="4px";
-            canvas1.style.cursor="pointer";
-            canvas1.setAttribute("onClick","javascript: Fun(this.id);");
-            ctx1.drawImage(c,0,0);
-            div.appendChild(canvas1);
-            var canvas2=document.createElement("canvas");
-            var ctx2=canvas2.getContext("2d");
-            canvas2.width=ca.width;
-            canvas2.height=ca.height;
-            canvas2.id="remove"+count;
-            canvas2.style.cursor="pointer";
-            canvas2.setAttribute("onClick","javascript: fun2(this.id);");
-            ctx2.drawImage(ca,0,0);
-            div.appendChild(canvas2);
-            div.appendChild(br);
-            var index=id.slice(3);
-            document.getElementById("dup"+index).after(div);
-            count++;
-        });
-    }
-
     return (
         <body style={{marginTop: "52px"}}>
             <div className="container-fluid" style={{backgroundColor: "rgba(134, 187, 195,0.8)"}}>
@@ -92,8 +12,6 @@ function UX(){
                     <label htmlFor="myfile">Link related files:</label>
                     <div id="dup0">
                         <input type="file" id="myfile" name="myfile"/>
-                        <canvas id="myCanvas" width="22" height="22" onClick={Fun('add0')} style={{cursor: "pointer"}}></canvas>
-                        <canvas id="myCanvas2" width="22" height="22" style={{display: "none"}}></canvas><br/>
                     </div>
                     <br/>
                     <input type="submit" value="Submit" style={{fontSize: "large", padding: "5px"}}/>
